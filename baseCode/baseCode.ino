@@ -3,6 +3,7 @@
 #include "pins.h"
 #include "constants.h"
 #include "PT6961.h"
+#include "Radio.h"
 #include "globals.h"
 #include "generalFunctions.h"
 #include "lineFollowing.h"
@@ -10,8 +11,6 @@
 #include "subStates.h"
 #include "Time.h"
 #include "GateTiming.h"
-#include <SPI.h>
-#include "RF24.h"
 #include <ComponentObject.h>                //Used for the range sensors
 #include <RangeSensor.h>                    //Used for the range sensors
 #include <SparkFun_VL53L1X.h>               //Used for the range sensors
@@ -20,9 +19,6 @@
 #include <Wire.h>
 #include "SparkFun_VL53L1X.h"
 
-bool radioNumber = 0;
-RF24 radio(7, 8);
-byte addresses[][6] = {"1Node", "2Node"};
 
 //Servo lineSensorServo;------------------------------------------------------------------------------------------------------
 //Servo launcherServo;------------------------------------------------------------------------------------------------------
@@ -45,18 +41,9 @@ void setup() {
   Wire.begin();
 
   //initialize radio
-  /*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    radio.begin();
-    radio.setPALevel(RF24_PA_LOW);
-    if (radioNumber) {
-    radio.openWritingPipe(addresses[1]);
-    radio.openReadingPipe(1, addresses[0]);
-    } else {
-    radio.openWritingPipe(addresses[0]);
-    radio.openReadingPipe(1, addresses[1]);
-    }
-    radio.startListening();
-  */
+  //InitializeRadio();
+
+  
   // initialize motor controllers
   pinMode(WHEEL_DIR_LB, OUTPUT);
   pinMode(WHEEL_DIR_LF, OUTPUT);
@@ -257,24 +244,4 @@ void TurningState(unsigned long int turnTime, bool dir) {
   }
 }
 
-void RadioSend(int message) {
-  radio.stopListening();
-
-  if (!radio.write( &message, sizeof(int) )) {
-    Serial.println(F("failed to send"));
-  }
-
-  radio.startListening();
-}
-
-int RadioRead() {
-  int temp = -1;
-  if ( radio.available()) {
-    while (radio.available()) {
-      radio.read( &temp, sizeof(int));
-      return temp;
-    }
-  }
-  return temp;
-}
 
