@@ -28,8 +28,8 @@ byte addresses[][6] = {"1Node", "2Node"};
 //Servo launcherServo;------------------------------------------------------------------------------------------------------
 
 void setup() {
-  display.initDisplay();
-  display.sendNum(1234, 1);
+  //display.initDisplay();
+  //display.sendNum(1234, 1);
   // initialize line sensors
   for (int i = 0; i < 8; i++) {
     pinMode(LINE_SENSOR[i], INPUT);
@@ -70,13 +70,13 @@ void setup() {
   pinMode(BUTTON_1, INPUT_PULLUP);
   pinMode(BUTTON_2, INPUT_PULLUP);
 
-  afio_cfg_debug_ports(AFIO_DEBUG_SW_ONLY); //makes PB3 work
+  //afio_cfg_debug_ports(AFIO_DEBUG_SW_ONLY); //makes PB3 work
 
   //checkSensorValidity();//check distance sensor------------------------------------------------------------------------------------------------------
 }
 
 void loop() {
-  display.sendNum(state);
+  //display.sendNum(state);
   /*
      State setup:
      case n:
