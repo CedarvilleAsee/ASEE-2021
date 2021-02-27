@@ -29,7 +29,7 @@ const int TURN_SPEED      = 50;     //wheel speed when turning
 const int BLIND_SPEED     = 120;    //wheel speed when travelling without line
 const int FOLLOW_SPEED    = 150;    //wheel speed when following line
 const int PICKUP_SPEED    = 100;    //wheel speed when picking up a puck
-const int LINE_STRICTNESS = 35;     //line follow tuning parameter
+const int LINE_STRICTNESS = 40;     //line follow tuning parameter
 
 //servo angles
 const int LAUNCHER_HOLD     = 20;   //hold both mousetraps
