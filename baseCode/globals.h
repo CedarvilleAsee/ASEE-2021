@@ -34,7 +34,7 @@ unsigned long CurrentTime = 0.0;
 
 int sensorCounter = 0;
 
-PT6961 display(DIN, CLOCK, CS);
+//PT6961 display(DIN, CLOCK, CS);
 
 
 #endif
