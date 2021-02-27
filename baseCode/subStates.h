@@ -8,7 +8,7 @@
 //  Waits until the button on board is pushed, go to next statez
 bool waitState() {
   //for centering robot
-  display.sendNum(sensorCounter, 0);
+  //display.sendNum(sensorCounter, 0);
   //keeps the robot still
   WriteToWheels(0, 0);
   //when started, copy missions into globals
