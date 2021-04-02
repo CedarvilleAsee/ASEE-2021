@@ -3,7 +3,6 @@
   Created by Garrett Blanton January, 16, 2013.
   Released into the public domain.
 */
-#include "constants.h"
 
 //0 - A
 //1 - B
@@ -107,4 +106,3 @@ void PT6961::sendDigits(char digit1, char digit2, char digit3, char digit4, char
   shiftOut(_DIN, _CLK, LSBFIRST, DISP[digit4]);
   digitalWrite(_CS,HIGH);    
 }
-

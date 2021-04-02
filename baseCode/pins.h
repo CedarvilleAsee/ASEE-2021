@@ -1,20 +1,21 @@
 #ifndef PINS
 #define PINS
 
-//display
-//const int CS    = PC13;
-//const int CLOCK = PC14;
-//const int DIN   = PC15;
+//7 segment display
+const int CS    = 44;
+const int CLOCK = 46;
+const int DIN   = 42;
 
 // Buttons
-const int BUTTON_2 = A0;//Go red button
-const int BUTTON_1 = A1;//Go blue button
+const int BUTTON_2 = 32;//A0 Go red button
+const int BUTTON_1 = 30;//A1 Go blue button
 
 // Wheels
 const int WHEEL_DIR_LB = 26;//BIN1
 const int WHEEL_DIR_LF = 28;//BIN2
 const int WHEEL_DIR_RB = 36;//AIN1
 const int WHEEL_DIR_RF = 34;//AIN2
+const int H_BRIDGE_ENABLE = 33;
 
 const int WHEEL_SPEED_L = 7; //PWMB
 const int WHEEL_SPEED_R = 8; //PWMA
@@ -28,7 +29,7 @@ const int LINE_SENSOR_SERVO = 13;
 const int LAUNCHER_SERVO    = 12;
 
 //Other sensors
-//const int DISTANCE_SENSOR   = PB9;
+const int DISTANCE_SENSOR   = 9;
 
 
 #endif

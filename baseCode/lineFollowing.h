@@ -19,12 +19,7 @@ void ReadLine() {
   }
 
   sensorCounter = 0;
-  
-  //for (int i = 0; i < 8; i++ ){
-  //  sensorCounter += sensors[i]<<i;
-  //}
-  
-    //display.sendNum((amountSeen * 100) +(lastLineIndex)*10 + firstLineIndex);
+  //display.sendNum((amountSeen * 100) +(lastLineIndex)*10 + firstLineIndex);
 }
 
 void WriteWheelDirection(bool ldir, bool rdir) {
@@ -35,6 +30,7 @@ void WriteWheelDirection(bool ldir, bool rdir) {
 }
 
 void WriteToWheels(int ls, int rs) {
+  digitalWrite(H_BRIDGE_ENABLE,HIGH);
   if(ls < 0) {
     digitalWrite(WHEEL_DIR_LF, false); //right backwards
     digitalWrite(WHEEL_DIR_LB, true);
@@ -73,6 +69,33 @@ bool LineFollow(int ts, int strictness, int cen1 = 4, int cen2 = 3) {
     WriteToWheels(leftSpeed, rightSpeed);
   }
   return false;
+}
+
+void favorLineFollow(int ts, int strictness, bool favorRight = false, int cen = 3,int stable = -7){
+  //Sees no lines, use what the center is to guess a direction to turn
+  if(amountSeen == 0){
+    if(cen<4){//Turn left
+      WriteToWheels(ts+4*strictness,ts-4*strictness);
+    }else{//Turn right
+      WriteToWheels(ts-4*strictness,ts+4*strictness);
+    }
+    return;
+  }
+  //-7 is a sentitent value for same as cen
+  if(stable==-7) stable=cen;
+  //Diff is the difference between the central index (cen) and the index of the line it's following
+  int diff;
+  if(favorRight)
+    if(abs(lastLineIndex - cen)>abs(lastLineIndex - stable)) diff = lastLineIndex - stable;
+    else diff = lastLineIndex - cen;
+  else
+    if(abs(firstLineIndex - cen)>abs(firstLineIndex - stable)) diff = firstLineIndex - stable;
+    else diff = firstLineIndex - cen;
+  
+  //If diff is negative, it will turn to the left, if postive: turn left
+  int rightSpeed = ts + diff * strictness;
+  int leftSpeed  = ts - diff * strictness;
+  WriteToWheels(leftSpeed,rightSpeed);
 }
 
 #endif

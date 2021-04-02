@@ -95,5 +95,3 @@ void setupStateBlue()
   }
   Serial.println(F("Blue gate state established!"));
 }
-
-
