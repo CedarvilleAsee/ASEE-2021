@@ -24,7 +24,7 @@ const int STATE_TIME[17] = {
   /*State 10*/1000,      /*Back up until the line is found*/              /*minimum time (in ms) for backing up*/
   /*State 11*/450,       /*Turn towards center of track*/                 /*Time (in ms) to turn for*/
   /*State 12*/950,       /*Drive to center of track*/                     /*Time (in ms) to drive for*/
-  /*State 13*/675,       /*turn to face goal*/                            /*Time (in ms) to turn for*/
+  /*State 13*/666,       /*turn to face goal*/                            /*Time (in ms) to turn for*/
   /*State 14*/0,         /*drive up to line*/                             /*No affect, exits after line is found*/
   /*State 15*/0,         /*Shoot when able*/                              /*No affect, exits after puck has been shot*/
   /*State 16*/0          /*Time out corner*/                              /*No affect, never exits*/

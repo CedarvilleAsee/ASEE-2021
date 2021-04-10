@@ -132,7 +132,10 @@ void loop() {
       if(subState == 0){//if we haven't found the line yet
         WriteToWheels(BLIND_SPEED, BLIND_SPEED);
         if(amountSeen > 1 ){//once we've found the line
-          subState = 1;
+          ReadLine();
+          if(amountSeen > 1){
+            subState = 1;
+          }
         }
       }
 
